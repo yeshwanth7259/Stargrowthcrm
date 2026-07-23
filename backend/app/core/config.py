@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7  # 7 days
     
     # Using Vercel Postgres if deployed, or SQLite for local rapid development
-    SQLALCHEMY_DATABASE_URI: str = os.getenv("POSTGRES_URL", "sqlite:///./stargrowth_crm.db")
+    SQLALCHEMY_DATABASE_URI: str = os.getenv("POSTGRES_URL") or os.getenv("DATABASE_URL") or "sqlite:///./stargrowth_crm.db"
     
     # Fix postgres:// to postgresql:// for SQLAlchemy compatibility
     @property
