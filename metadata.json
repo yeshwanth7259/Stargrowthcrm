@@ -1,0 +1,8 @@
+{
+  "name": "Star Growth Hub CRM",
+  "description": "End-to-end digital marketing agency CRM for Managers, Employees, and Clients with project tracking, task assignments, activity & login tracking, campaign performance metrics, and AI marketing generator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
