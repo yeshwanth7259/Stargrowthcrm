@@ -6,13 +6,15 @@ from app.api import api_router
 from app.db.session import engine
 from app.db.base import Base
 
-Base.metadata.create_all(bind=engine)
-
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
     openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
+
+@app.on_event("startup")
+def on_startup():
+    Base.metadata.create_all(bind=engine)
 
 # Set all CORS enabled origins
 app.add_middleware(
