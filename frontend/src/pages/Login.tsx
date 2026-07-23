@@ -25,7 +25,7 @@ export default function Login() {
 
   useEffect(() => {
     // Check if system is initialized
-    fetch(`http://${window.location.hostname}:8000/api/v1/setup/status`)
+    fetch(`/api/v1/setup/status`)
       .then(res => res.json())
       .then(data => {
         if (!data.initialized) {
@@ -47,7 +47,7 @@ export default function Login() {
     setLoading(true)
     setError("")
     try {
-      const response = await fetch("http://localhost:8000/api/v1/auth/login", {
+      const response = await fetch("/api/v1/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

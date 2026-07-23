@@ -27,6 +27,12 @@ class CompanySetupRequest(BaseModel):
 
 @router.get("/status", response_model=SetupStatus)
 def get_setup_status(db: Session = Depends(get_db)):
+    # Initialize DB tables here for Serverless environments safely!
+    # This guarantees tables are created in Vercel before we query them
+    from app.db.base import Base
+    from app.db.session import engine
+    Base.metadata.create_all(bind=engine)
+    
     # If any company exists, it's initialized
     company_exists = db.query(Company).first() is not None
     return SetupStatus(initialized=company_exists)

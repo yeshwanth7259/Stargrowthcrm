@@ -29,7 +29,7 @@ export default function CompanySetup() {
 
   useEffect(() => {
     // Check if already initialized
-    fetch('http://localhost:8000/api/v1/setup/status')
+    fetch('/api/v1/setup/status')
       .then(res => res.json())
       .then(data => {
         if (data.initialized) {
@@ -59,7 +59,7 @@ export default function CompanySetup() {
     setError('');
     
     try {
-      const response = await fetch('http://localhost:8000/api/v1/setup/register-manager', {
+      const response = await fetch('/api/v1/setup/register-manager', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
