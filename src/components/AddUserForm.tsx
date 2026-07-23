@@ -29,7 +29,7 @@ export const AddUserForm: React.FC<AddUserFormProps> = ({ onClose, onSuccess }) 
     try {
       const token = localStorage.getItem('crm_token'); 
 
-      const response = await fetch(`http://${window.location.hostname}:8000/api/v1/users/`, {
+      const response = await fetch(`/api/v1/users/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
