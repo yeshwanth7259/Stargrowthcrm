@@ -39,6 +39,10 @@ def get_setup_status(db: Session = Depends(get_db)):
 
 @router.post("/register-manager")
 def register_manager(request: CompanySetupRequest, db: Session = Depends(get_db)):
+    from app.db.base import Base
+    from app.db.session import engine
+    Base.metadata.create_all(bind=engine)
+    
     if db.query(Company).first() is not None:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
